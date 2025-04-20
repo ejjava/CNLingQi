@@ -1,0 +1,531 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1e1e1e;
+    font-family: 'Source Code Pro', monospace;
+    color: #f0f0f0;
+    heig ht: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    transition: background-image 0.5s ease, background-color 0.5s ease;
+}
+
+.terminal {
+    width: 100%;
+    max-width: 800px;
+    hei ght: 100%;
+    background-color: #2d2d2d;
+    border-radius: 8px;
+    overflow: hidden;
+    box-sha dow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.termi nal-header {
+    height: 30px;
+    background-color: #3c3c3c;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    position: relative;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.terminal-button.close {
+    background-color: #ff5f56;
+}
+
+.terminal-button.minimize {
+    background-color: #ffbd2e;
+}
+
+.terminal-button.maximize {
+    background-color: #27c93f;
+}
+
+.terminal-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #a0a0a0;
+    font-size: 12px;
+}
+
+.terminal-body {
+    height: calc(100% - 30px);
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.welcome-message {
+    color: #4caf50;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+#history {
+    margin-bottom: 10px;
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    color: #4caf50;
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+#command-input {
+    background: transparent;
+    border: none;
+    color: #f0f0f0;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+    width: calc(100% - 120px);
+    outline: none;
+    caret-color: #f0f0f0;
+}
+
+.command-line {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.command {
+    color: #f0f0f0;
+}
+
+.command-output {
+    margin-bottom: 10px;
+    color: #cccccc;
+}
+
+.error {
+    color: #f44336;
+}
+
+.success {
+    color: #4caf50;
+}
+
+.link {
+    color: #64b5f6;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.help-command {
+    color: #ff9800;
+    margin-right: 10px;
+}
+
+.help-description {
+    color: #cccccc;
+}
+
+.bookmark-delete {
+    background-color: #3c3c3c;
+    color: #f44336;
+    border: 1px solid #f44336;
+    border-radius: 3px;
+    padding: 2px 6px;
+    margin-left: 10px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.bookmark-delete:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2d2d2d;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+
+
+/* ASCII艺术样式 */
+.ascii-art {
+    white-space: pre;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    line-height: 1.3;
+    color: #64b5f6;
+    margin: 15px 0;
+    padding: 10px;
+    background: rgba(30, 30, 30, 0.7);
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .ascii-art {
+        font-size: 12px;
+    }
+}
+
+
+
+
+
+/* 养鱼模拟器样式 */
+.fish-tank {
+    background: rgba(0, 40, 60, 0.7);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+    border: 2px solid #0078D7;
+    box-shadow: 0 0 15px rgba(0, 120, 215, 0.3);
+}
+
+.fish-tank.updated {
+    animation: pulse 0.5s;
+}
+
+@keyframes pulse {
+    0% { background-color: rgba(0, 40, 60, 0.7); }
+    50% { background-color: rgba(0, 60, 80, 0.9); }
+    100% { background-color: rgba(0, 40, 60, 0.7); }
+}
+
+.fish-header {
+    font-size: 1.3em;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #4FC3F7;
+    text-shadow: 0 0 5px rgba(79, 195, 247, 0.5);
+}
+
+.fish-timer {
+    text-align: center;
+    color: #B0BEC5;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.fish {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    padding: 15px;
+    background: rgba(0, 20, 40, 0.5);
+    border-radius: 8px;
+    transition: all 0.3s;
+    border-left: 4px solid transparent;
+}
+
+.fish.hungry {
+    background: rgba(100, 20, 0, 0.3);
+    border-left: 4px solid #FF5722;
+    animation: hungry-pulse 2s infinite;
+}
+
+@keyframes hungry-pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+.fish-icon {
+    font-size: 32px;
+    margin-right: 20px;
+    min-width: 60px;
+    text-align: center;
+    filter: drop-shadow(0 0 3px currentColor);
+}
+
+.fish-info {
+    flex-grow: 1;
+}
+
+.fish-type {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #4FC3F7;
+    margin-bottom: 5px;
+}
+
+.fish-age {
+    color: #B0BEC5;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.fish-progress {
+    height: 18px;
+    background: #263238;
+    border-radius: 9px;
+    margin: 8px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.fish-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #00B4FF, #00E676);
+    border-radius: 9px;
+    transition: width 0.5s;
+}
+
+.fish-progress span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 0.8em;
+    text-shadow: 0 0 3px black;
+}
+
+.fish-fed {
+    color: #FFC107;
+    font-size: 0.9em;
+}
+
+.fish-hungry {
+    color: #FF5722;
+    font-weight: bold;
+    margin-top: 5px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.fish-status {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #0078D7;
+    flex-wrap: wrap;
+}
+
+.fish-status span {
+    margin: 5px 10px;
+    color: #B0BEC5;
+}
+
+.fish-status button {
+    padding: 6px 12px;
+    margin: 5px;
+    background: linear-gradient(135deg, #0078D7, #004E8C);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 80px;
+}
+
+.fish-status button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0, 120, 215, 0.5);
+}
+
+.fish-message {
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.fish-message.success {
+    background: rgba(46, 125, 50, 0.3);
+    border-left: 4px solid #2E7D32;
+    color: #69F0AE;
+}
+
+.fish-message.error {
+    background: rgba(198, 40, 40, 0.3);
+    border-left: 4px solid #C62828;
+    color: #FF8A80;
+}
+
+.fish-message.warning {
+    background: rgba(245, 124, 0, 0.3);
+    border-left: 4px solid #F57C00;
+    color: #FFD180;
+}
+
+.fish-status-detail {
+    background: rgba(0, 30, 60, 0.7);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #0078D7;
+}
+
+.fish-status-detail h3 {
+    color: #4FC3F7;
+    margin-top: 0;
+    border-bottom: 1px solid #0078D7;
+    padding-bottom: 8px;
+}
+
+.fish-status-detail p {
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.fish-type-tag {
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+/* 恐龙游戏样式 */
+.dino-game {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 500px;
+    background: #f5f5f5;
+    border: 2px solid #333;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Courier New', monospace;
+    z-index: 1000;
+}
+
+.dino-help {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.dino-help h3 {
+    color: #4CAF50;
+    margin-top: 0;
+}
+
+.dino-help p {
+    margin: 8px 0;
+}
+
+.dino-message {
+    padding: 10px;
+    background: rgba(0, 150, 0, 0.2);
+    border-left: 3px solid #4CAF50;
+    margin-bottom: 10px;
+}
+
+.dino-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.dino-canvas {
+    background: white;
+    padding: 5px;
+    border: 1px solid #ddd;
+    line-height: 1.2;
+}
+
+.dino-row {
+    white-space: pre;
+    font-size: 16px;
+    letter-spacing: 3px;
+}
+
+.dino-gameover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.dino-gameover h3 {
+    color: #FF5722;
+    font-size: 24px;
+}
+
+.dino-gameover button {
+    padding: 8px 20px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/* 恐龙和障碍物样式 */
+.dino-row .R {
+    color: #333;
+    font-weight: bold;
+}
+
+.dino-row .# {
+    color: #4CAF50;
+}
+
+.dino-row .^ {
+    color: #2196F3;
+}
